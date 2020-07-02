@@ -39,6 +39,12 @@ void loop()
       else{
         force =  fsrG / 0.000000642857;
       }
+      
+      //preveri ali gremo skozi int vrednost
+      if((int)force < 0){
+        force = 32767; // ce smo sli skozi postavi na max value
+      }
+      
       sensors[i] = (int)force;
       // Serial.println(String(i) + " : " +String((int)force));
        //Serial.println();
@@ -51,6 +57,5 @@ void loop()
     out += String((int)sensors[i]) + ",";
   }
   Serial.println(out);
-      delay(200);
+      delay(20);
 }
-
