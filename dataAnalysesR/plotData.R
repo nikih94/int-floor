@@ -1,7 +1,9 @@
-#install.packages("ggeffects")
-
+#install.packages("remotes")
+#remotes::install_github("coleoguy/evobir")
 
 #detach("package:plyr", unload=TRUE) 
+library(remotes)
+library(slider)
 library(ggeffects)
 library(gridExtra)
 library(grid)
@@ -13,7 +15,7 @@ library(reshape2)
 library(knitr)
 
 
-myData <- read.delim(file='../../data_firstSample/korakanjeStoj20s',header=FALSE,sep=',')
+myData <- read.delim(file='../../data_firstSample/50hz/padec1',header=FALSE,sep=',')
 
 myData$V17 = NULL #delete last row
 
@@ -36,7 +38,8 @@ for(colu in colnames(myData)){
 
 do.call(grid.arrange,c(myPlot,nrow=4))
 
-myPlot[7]
+myPlot[5]
 
+SlidingWindow("mean",myData$V5,50,5)
 
 

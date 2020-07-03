@@ -1,3 +1,19 @@
+/*
+////////////pohitrit analogread
+#define FASTADC 1
+
+// defines for setting and clearing register bits
+#ifndef cbi
+#define cbi(sfr, bit) (_SFR_BYTE(sfr) &= ~_BV(bit))
+#endif
+#ifndef sbi
+#define sbi(sfr, bit) (_SFR_BYTE(sfr) |= _BV(bit))
+#endif
+ 
+
+//////////////////p
+*/
+
 
 static const uint8_t analog_pins[] = {A0,A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11,A12,A13,A14,A15};
 int sensors[16];
@@ -9,11 +25,19 @@ const float R_DIV = 3230.0; // Measured resistance of 3.3k resistor
 
 void setup() 
 {
-  Serial.begin(9600);
+  Serial.begin(115200);
+  
   for (int i = 0; i < 16; i++) {
     pinMode(analog_pins[i], INPUT);
   }
-  
+/*
+  #if FASTADC
+  // set prescale to 16
+  sbi(ADCSRA,ADPS2) ;
+  cbi(ADCSRA,ADPS1) ;
+  cbi(ADCSRA,ADPS0) ;
+  #endif
+*/  
 }
 
 void loop() 
@@ -57,5 +81,5 @@ void loop()
     out += String((int)sensors[i]) + ",";
   }
   Serial.println(out);
-      delay(20);
+  delay(15);
 }

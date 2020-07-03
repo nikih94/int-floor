@@ -21,6 +21,7 @@ public class DataLogger
                 System.err.println("Unable to open the port.");
             }
         }
+        port.setBaudRate(115200);
     }
 
     public void run() {
