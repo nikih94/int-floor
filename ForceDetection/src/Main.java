@@ -14,7 +14,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -29,7 +28,7 @@ public class Main extends Application {
 	public static Plate[][] plates;
 	public static int frequncy = 200;
 	public static int id = 0;
-	public static float sensor_data[][] = new float[3][16];
+	public static float[][] sensor_data = new float[3][16];
 
 	@Override
 	public void start(Stage primaryStage) {
@@ -104,10 +103,10 @@ public class Main extends Application {
 		RightMenu right_menu = new RightMenu(16, chart_plates);
 		VBox vbox = new VBox(2);
 		HBox hbox = new HBox(2);
-		hbox.getChildren().addAll(innorenew_logo, eu_logo);
+		//hbox.getChildren().addAll(innorenew_logo, eu_logo); //logo itd
 		hbox.setAlignment(Pos.CENTER);
-		HBox.setHgrow(innorenew_logo, Priority.ALWAYS);
-		HBox.setHgrow(eu_logo, Priority.ALWAYS);
+		//HBox.setHgrow(innorenew_logo, Priority.ALWAYS);//logo itd
+		//HBox.setHgrow(eu_logo, Priority.ALWAYS);//logo itd
 		vbox.getChildren().addAll(right_menu, hbox);
 		split_pane.getItems().addAll(gridPane, vbox);
 		// StackPane.setAlignment(gridPane, Pos.CENTER);

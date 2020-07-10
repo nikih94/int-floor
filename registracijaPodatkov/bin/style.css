@@ -1,0 +1,26 @@
+.plate{
+
+}
+
+.sensor{
+	-fx-border-color:black;
+	-fx-border-width: 3 3 3 3;
+	-fx-font-size :12;
+	-fx-font-weight:bold;
+}
+.calibrate{
+	-fx-alignment: center ;
+}
+VBox {
+    -fx-alignment: center ;
+    -fx-padding: 10 ;
+}
+.progress{
+	fx-pref-width:100;
+	fx-pref-height:100;
+}
+.chart-series-line{
+	-fx-stroke: linear-gradient(to top, #39b500, #d1a808 50%, #ff0000);
+    -fx-stroke-width: 2px;
+ }
+ 
