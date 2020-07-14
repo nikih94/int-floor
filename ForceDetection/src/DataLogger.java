@@ -15,6 +15,7 @@ public class DataLogger
         for (int i = 0; i < available_ports.length; i++) {
             System.out.println(String.valueOf(i) + " : " + available_ports[i]);
         }
+        //kommentiraj za feature extraction iz file ------------------------------------------------------------------------
         port = available_ports[Main.port_id];
         if (port != null) {
             port.setComPortTimeouts(4096, 0, 0);
@@ -23,6 +24,7 @@ public class DataLogger
                 System.err.println("Unable to open the port.");
             }
         }
+        //kommentiraj za feature extraction iz file ------------------------------------------------------------------------
         port.setBaudRate(115200);
     }
 
@@ -30,6 +32,8 @@ public class DataLogger
         for (int i = 0; i < Main.sensor_data[1].length; i++) {
             Main.sensor_data[1][i] = 1000.0F;
         }
+
+        //postavi port == null za feature extraction iz file, drugace port != null   --------------------------------------------------------
         if (port != null) {
             Scanner s = null;
             /// Branje iz ARDUINO
@@ -39,7 +43,7 @@ public class DataLogger
             //// Branje iz file:_______________________________________
             ///moras commentirat tudi vrstico,ki odstrani zadnjo vejico iz vrstice (line = line.substring(0, line.length() - 1);)
             String fileName = "random3m0.txt";
-            File text = new File("/home/niki/Desktop/tesi/data_registered/testnipodatkiFALSE/"+fileName);
+            File text = new File("/home/niki/Desktop/tesi/data_registered/testnipodatkiTRUE/"+fileName);
             ReadRegistered resi = new ReadRegistered(fileName);
 
             try {
@@ -106,6 +110,7 @@ public class DataLogger
                     System.out.print(Integer.toString(featureArray[i])+",");
                 }
                 System.out.println();
+
                 /*
                 /////////SHRANI FEATURE PODATKE!!!
                 resi.saveLine(featureArray);
